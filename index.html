@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPMB Provinsi Jawa Timur 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #ffffff;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-jatim {
+            width: 32px;
+            height: auto;
+        }
+
+        .badge-spmb {
+            background-color: #3b82f6;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+
+        /* --- BANNER PENGUMUMAN --- */
+        .announcement-banner {
+            background-color: #eff6ff;
+            padding: 12px 32px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3b82f6;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .arrow-left { left: 12px; }
+        .arrow-right { right: 12px; }
+
+        /* --- MAIN CONTENT CONTAINER --- */
+        .container {
+            padding: 24px 20px;
+            max-width: 480px; /* Disesuaikan dengan view mobile seperti di screenshot */
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        .btn-kembali {
+            display: inline-flex;
+            align-items: center;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .btn-kembali::before {
+            content: "‹";
+            font-size: 20px;
+            margin-right: 6px;
+            line-height: 1;
+        }
+
+        h1.title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            line-height: 1.4;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .year-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 24px;
+        }
+
+        /* --- CARD TATA CARA (BACKGROUND KUNING/BIRU) --- */
+        .card-outer {
+            background: linear-gradient(135deg, #3b82f6 0%, #67e8f9 40%, #fef08a 100%);
+            border-radius: 24px;
+            padding: 12px;
+            margin-bottom: 24px;
+        }
+
+        .card-inner {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* --- MINI MOCKUP BROWSER WINDOW --- */
+        .mockup-window {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .mockup-header {
+            background-color: #1e293b;
+            padding: 8px 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #eab308; }
+        .dot-green { background-color: #22c55e; }
+
+        .mockup-body {
+            padding: 16px;
+            background-color: #ffffff;
+            margin: 12px;
+            border-radius: 8px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .step-number {
+            background-color: #f1f5f9;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 auto 12px auto;
+        }
+
+        .mockup-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .mockup-desc {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* --- FORM FIELD SECTION --- */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1e293b;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .form-input:focus {
+            border-color: #3b82f6;
+        }
+
+        /* Icon penunjang di dalam input field */
+        .input-icon {
+            position: absolute;
+            right: 14px;
+            cursor: pointer;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- BUTTON MASUK --- */
+        .btn-submit {
+            width: 100%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-top: 24px;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-submit:hover {
+            background-color: #2563eb;
+        }
+
+        /* --- FOOTER SECTION --- */
+        footer {
+            padding: 20px;
+            background-color: #ffffff;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="" alt="Logo Jawa Timur" class="logo">
+            <div class="badge-spmb">SPMB Jawa Timur</div>
+        </div>
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <div class="announcement-banner">
+        <a href="#" class="banner-arrow arrow-left">‹</a>
+        Pendaftaran Tahap 2 Jalur Afirmasi, Mutasi Orang Tua/Wali, dan Jalur Prestasi Hasil Lomba SMA/SMK akan dibuka tanggal 17 Juni 2026 pukul 00.01 WIB dan ditutup tanggal 18 Juni 2026 pukul 21.00 WIB. Pengumuman Tahap 2 adalah sesuai jadwal yaitu tanggal 22 Juni 2026, pukul 09.00 WIB.
+        <a href="#" class="banner-arrow arrow-right">›</a>
+    </div>
+
+    <div class="container">
+        <a href="#" class="btn-kembali">Kembali</a>
+
+        <h1 class="title">Cetak Bukti Penerimaan Tahap 2</h1>
+        <div class="subtitle">Jalur Afirmasi, Jalur Mutasi Orang Tua/wali, Jalur Prestasi Hasil Lomba</div>
+        <div class="year-label">SPMB Provinsi Jawa Timur 2026</div>
+
+        <div class="card-outer">
+            <div class="card-inner">
+                <div class="card-title">Tata Cara Cetak Bukti</div>
+                <div class="card-desc">Harap membaca panduan dibawah ini sebelum melakukan cetak bukti penerimaan</div>
+                
+                <div class="mockup-window">
+                    <div class="mockup-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="step-number">01</div>
+                        <div class="mockup-title">Masuk ke situs SPMB Jatim</div>
+                        <div class="mockup-desc">Masuk menggunakan NISN, Tanggal Penerbitan KK/SKD, dan PIN.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form onsubmit="tampilkanHacked(event)">
+            <div class="form-group">
+                <label class="form-label" for="nisn">Nomor Induk Sekolah Nasional (NISN)</label>
+                <div class="input-wrapper">
+                    <input class="form-input" type="text" id="nisn" placeholder="Masukkan NISN">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="pin">PIN Calon Murid</label>
+                <div class="input-wrapper">
+                    <input class="form-input" type="password" id="pin" placeholder="Masukkan PIN Calon Murid">
+                    <span class="input-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="tanggal-kk">Tanggal Penerbitan KK/SKD</label>
+                <div class="input-wrapper">
+                    <input class="form-input" type="text" id="tanggal-kk" placeholder="hh/bb/tttt">
+                    <span class="input-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Masuk
+            </button>
+        </form>
+    </div>
+
+    <footer>
+        <img src="logo.png" alt="Logo Jawa Timur" class="logo-jatim">
+    </footer>
+
+    <script>
+        function tampilkanHacked(event) {
+            event.preventDefault(); // Mencegah halaman melakukan refresh
+            
+            // Mengubah seluruh isi body menjadi tampilan gambar full screen
+            document.body.innerHTML = `
+                <div style="background-color: #000000; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; overflow: hidden;">
+                    <img src="20260622_122600.png" alt="Hacked" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+            `;
+            
+            // Menyesuaikan style body agar hitam pekat dan tanpa sisa margin
+            document.body.style.backgroundColor = "#000000";
+            document.body.style.margin = "0";
+            document.body.style.padding = "0";
+        }
+    </script>
+</body>
+</html>
